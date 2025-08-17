@@ -27,10 +27,8 @@ public class Main {
     }
 
     private static void calculoSalario(double salarioBruto, double percentualDesconto) {
+
         double valorDesconto = salarioBruto * percentualDesconto / 100;
-        System.out.printf("Valor do Desconto: R$ %.2f\n", valorDesconto);
-        double salarioLiquido = salarioBruto - valorDesconto;
-        System.out.printf("Salário Líquido: R$ %.2f\n", salarioLiquido);
 
         if (valorDesconto < 400 && percentualDesconto == 0){
             System.out.println("Tipo de Desconto: Isento");
@@ -39,8 +37,14 @@ public class Main {
         } else if (valorDesconto < 400 && percentualDesconto == 4) {
             System.out.println("Tipo de Desconto: Médio");
         } else if (valorDesconto >= 400) {
+            valorDesconto = 400;
             System.out.println("Tipo de Desconto: Máximo");
         }
+
+        System.out.printf("Valor do Desconto: R$ %.2f\n", valorDesconto);
+        double salarioLiquido = salarioBruto - valorDesconto;
+        System.out.printf("Salário Líquido: R$ %.2f\n", salarioLiquido);
+
     }
 
 }
