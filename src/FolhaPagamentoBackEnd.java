@@ -1,45 +1,20 @@
-public class FolhaPagamentoBackEnd {
+import java.util.Scanner;
 
-    public static double calculoSalario(double salarioBruto) {
-        double percentualDesconto;
+public class FolhaPagamentoFrontEnd {
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
 
-        if (salarioBruto <= 2000){
-            percentualDesconto = 0;
-        } else if (salarioBruto <= 4000){
-            percentualDesconto = 2;
-        } else {
-            percentualDesconto = 4;
-        }
+        System.out.println("Qual seu salário? ");
+        double salarioBruto = sc.nextDouble();
 
-        double valorDesconto = salarioBruto * percentualDesconto / 100;
+        double desconto = FolhaPagamentoBackEnd.calculoSalario(salarioBruto);
 
-        if (valorDesconto > 400){
-            valorDesconto = 400;
-        }
+        System.out.println("O desconto é R$ " + desconto);
+        System.out.println("O Salário Líquido é R$ " + FolhaPagamentoBackEnd.calcularSalarioLiquido(salarioBruto, desconto));
+        System.out.println("O tipo do desconto é " + FolhaPagamentoBackEnd.ifTipoDesconto(salarioBruto));
 
-        return valorDesconto;
+        sc.close();
     }
 
-    public static double calcularSalarioLiquido(double salarioBruto, double valorDesconto){
-        return salarioBruto - valorDesconto;
-    }
 
-    public static String ifTipoDesconto(double salarioBruto) {
-        String tipoDesconto;
-
-        if (salarioBruto <= 2000){
-            tipoDesconto = "Isento";
-        } else if (salarioBruto <= 4000) {
-            tipoDesconto = "Baixo";
-        } else {
-            double valorDesconto = salarioBruto * 4 / 100;
-            if (valorDesconto > 400) {
-                tipoDesconto = "Máximo";
-            } else {
-                tipoDesconto = "Médio";
-            }
-
-        }
-        return tipoDesconto;
-    }
 }
